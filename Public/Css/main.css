@@ -7,6 +7,7 @@ a:hover{text-decoration: none;color: #f30;}
 img{max-width: 100%;border:none;}
 ul,li{margin:0px;padding:0px;list-style-type: none;}
 div, h1, h2, h3, h4, p, form, ul, label, input, textarea, img, span, dl, dt, dd{margin:0px;padding:0px;}
+.hide{display:none !important;}
 .clearfix:after { content: ""; display: block; clear: both; height: 0; }
 .clearfix { zoom: 1; }
 .pull-left { float: left; }
@@ -31,15 +32,14 @@ div, h1, h2, h3, h4, p, form, ul, label, input, textarea, img, span, dl, dt, dd{
  * 后台样式
  */
 #body-lock-screen-loading{position: absolute;background-color: #eee;width: 100%;height: 100%;color:#333333;text-align: center;z-index:9999;}
+#west{width:200px;}
+#north{height:80px;overflow:hidden;}
 #north.panel-body-noheader{border-top:none;border-left:none;border-right:none;}
-.link-north-head{background:#196CA7;height:40px;color:#fff;line-height:40px;overflow:hidden;font-family:"宋体";}
+.link-north-head{background:#196CA7;height:40px;color:#fff;line-height:40px;overflow:hidden;font-family:"宋体";padding-right:30px;}
 .link-north-head .pull-left{padding-left:5px;}
 .link-north-head .pull-left h1{font-size:22px;}
-.link-north-head .l-btn{color:#fff;border:1px solid transparent;padding:0px;}
-.link-north-head .l-btn:hover{background:none;border:1px solid #fff;}
-.link-north-head .l-btn.s-btn-plain-active{background:none;border:1px solid #fff;}
-.link-north-head .m-btn-downarrow{display: inline-block;font: normal normal normal 14px/1 FontAwesome;font-size: inherit;text-rendering: auto;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;background:none !important;}
-.link-north-head .m-btn-downarrow:before {content: "\f0d7";font-size: 14px;}
+.link-north-head .l-btn-plain{color:#fff;}
+.link-north-head .m-btn-plain-active{color:#000;border:1px solid #fff;}
 
 .link-north-navbar{color:#333;font-size: 20px;font-weight: bold;height: 40px;line-height: 40px;vertical-align: baseline;background-image:linear-gradient(to bottom, #FFFFFF, #EEEEEE);background-repeat: repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF',endColorstr='#FFEEEEEE',GradientType=0);overflow:hidden;}
 .link-north-navbar ul{font-size: 12px;float:left;margin:0;padding:0;list-style:none}
@@ -55,37 +55,22 @@ div, h1, h2, h3, h4, p, form, ul, label, input, textarea, img, span, dl, dt, dd{
  * [左侧菜单一级分类改造]
  * @type {[type]}
  */
-#left li .tree-node{padding:0px 10px;height:30px;line-height:30px;margin:5px auto 0px auto;}
+#left li .tree-node{padding:0px 10px;width:160px;height:30px;line-height:30px;margin:5px auto 0px auto;border:1px dashed transparent;}
 #left li .tree-node-hover{border:1px dashed #fff;}
 #left li .tree-node-selected{border:1px dashed #fff;}
 #left li .tree-node .tree-indent{display:none;}
 #left li .tree-node .tree-hit{margin-top:5px;}
 #left li .tree-title{height:30px;line-height:30px;font-weight:bold;}
 #left li .tree-icon{height:30px;line-height:30px;padding:0px 5px;}
+#oa-user-menu a{text-decoration:none;color:#333;}
 
-#left li .tree-node{width:160px;height:30px;line-height:30px;margin:5px auto 0px auto;}
-#left li .tree-node-hover{border:1px dashed #fff;}
-#left li .tree-node-selected{border:1px dashed #fff;}
-#left li .tree-node .tree-indent{display:none;}
-#left li .tree-title{height:30px;line-height:30px;}
-#left li .tree-icon{height:30px;line-height:30px;padding:0px 5px;}
 /**
  * [左侧菜单二级分类改造]
  * @type {[type]}
  */
-#left li ul li .tree-node{width:128px;height:30px;line-height:30px;margin:5px auto 0px auto;}
-#left li ul li .tree-node-hover{border:1px dashed #fff;}
-#left li ul li .tree-node-selected{border:1px dashed #fff;}
-#left li ul li .tree-node .tree-indent{display:none;}
-#left li ul li .tree-title{height:30px;line-height:30px;}
-#left li ul li .tree-icon{height:30px;line-height:30px;padding:0px 5px;}
-
-#left li ul li .tree-node{width:128px;height:30px;line-height:30px;margin:5px auto 0px auto;}
-#left li ul li .tree-node-hover{border:1px dashed #fff;}
-#left li ul li .tree-node-selected{border:1px dashed #fff;}
-#left li ul li .tree-node .tree-indent{display:none;}
+#left li ul li .tree-node{width:128px;}
 #left li ul li .tree-title{height:30px;line-height:30px;font-weight:normal;}
-#left li ul li .tree-icon{height:30px;line-height:30px;padding:0px 5px;}
+
 /**
  * [type 表单元素样式改造]
  * @type {String}
