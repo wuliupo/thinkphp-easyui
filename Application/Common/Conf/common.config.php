@@ -8,7 +8,7 @@ return array(
 
 	/*应用配置*/
 	'DEFAULT_MODULE' => 'Admin',									// 默认模块
-	'SITE_URL' => 'http://localhost.thinkphp-easyui.com',			//定义网站域名
+	'SITE_URL' => 'http://localhost/thinkphp-easyui',			//定义网站域名
 	'SHOW_PAGE_TRACE' => true,										//调试模式
 	'TMPL_L_DELIM' => '<{',											//模板引擎普通标签开始标记
 	'TMPL_R_DELIM' => '}>',											//模板引擎普通标签结束标记
