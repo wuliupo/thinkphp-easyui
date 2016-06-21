@@ -20,6 +20,9 @@
 			//切换主题
 			theme: function(t){
 				var theme = $('#theme').attr('href');
+				if(!t || !theme){
+					return;
+				}
 				$('#theme').attr('href', theme.substring(0, theme.indexOf('/themes/')) + '/themes/'+t+'/easyui.css');
 				$.cookie('theme', t, {path:'/', expires:3650});
 			},
@@ -28,21 +31,16 @@
 					r && eval(dofunction);
 				});
 			},
-
-			doForm: function(dom){//添加||编辑数据库信息
-				var isValid = $(dom).form('validate');
-				if (!isValid){
-					return isValid;	// 返回false，终止表单提交
-				}
+			ajax: function(type, url, data, beforeSend, success, error){
 				$.ajax({
-					type: $(dom).attr('method'),
-					url: $(dom).attr('action'),
-					data: $(dom).serialize(),
+					type: type || 'post',
+					url: url,
+					data: data,
 					dataType: 'json',
-					beforeSend: function(){
+					beforeSend: beforeSend || function(){
 						$.messager.progress({text:'处理中，请稍候...'});
 					},
-					success: function(data){
+					success: success || function(data){
 						$.messager.progress('close');
 						if(!data.status){
 							$.Oa.tip('提示信息', data.info,'error');
@@ -52,36 +50,23 @@
 							$.Oa.refresh();
 						}
 					},
-					error: function(data){
+					error: error || function(data){
 						$.messager.progress('close');
-						$.Oa.tip('提示信息', data.responseText,'error');
+						$.Oa.tip('提示信息', data.responseText, 'error');
 					}
 				});
 			},
 
+			doForm: function(dom){//添加||编辑数据库信息
+				var isValid = $(dom).form('validate');
+				if (!isValid){
+					return isValid;	// 返回false，终止表单提交
+				}
+				$.Oa.ajax($(dom).attr('method'), $(dom).attr('action'), $(dom).serialize());
+			},
+
 			delData: function(id, url, type){//删除数据库信息
-				$.ajax({
-					type: type || 'post',
-					url: url,
-					data: 'id=' + id,
-					dataType:'json',
-					beforeSend: function(){
-						$.messager.progress({text:'处理中，请稍候...'});
-					},
-					success: function(data){
-						$.messager.progress('close');
-						if(!data.status){
-							$.Oa.tip('提示信息', data.info,'error');
-						} else {
-							$.Oa.tip('提示信息', data.info,'info');
-							$.Oa.refresh();
-						}
-					},
-					error: function(data){
-						$.messager.progress('close');
-						$.Oa.tip('提示信息', data.responseText,'error');
-					}
-				});
+				$.Oa.ajax(type, url, 'id=' + id);
 			},
 
 			sess_verify: function(url, jumpurl){//登录过期校验
@@ -99,7 +84,7 @@
 
 			removeLeftMenu: function(stop, titles){//移除左侧菜单
 				//加个判断，防止多次点击重复加载
-				if(titles == $('body').layout('panel', 'west').panel('options').title){
+				if(titles === $('body').layout('panel', 'west').panel('options').title){
 					return;
 				}
 				$.each($('#left').accordion('panels'), function(i,n) {
@@ -107,7 +92,7 @@
 						var t = n.panel('options').title;
 						if(titles && titles.length){
 							for(var k = 0; k < titles.length; k++){
-								if(titles[k] == t) $('#left').accordion('remove', t);
+								if(titles[k] === t) $('#left').accordion('remove', t);
 							}
 						}else{
 							$('#left').accordion('remove', t);
@@ -119,7 +104,7 @@
 					var t = pp.panel('options').title;
 					if(titles && titles.length){
 						for(var k = 0; k < titles.length; k++){
-							if(titles[k] == t) $('#left').accordion('remove', t);
+							if(titles[k] === t) $('#left').accordion('remove', t);
 						}
 					}else{
 						$('#left').accordion('remove', t);

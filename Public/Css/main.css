@@ -28,6 +28,8 @@ div, h1, h2, h3, h4, p, form, ul, label, input, textarea, img, span, dl, dt, dd{
 .tree-node{padding:5px 0px;}
 .window-mask{opacity:0.8;}
 
+.datagrid-row-selected a{color:#fff;}
+
 /*
  * 后台样式
  */
